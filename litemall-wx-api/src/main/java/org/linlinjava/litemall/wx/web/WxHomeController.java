@@ -83,61 +83,61 @@ public class WxHomeController {
         }
         ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-        Callable<List> bannerListCallable = () -> adService.queryIndex();
+        //Callable<List> bannerListCallable = () -> adService.queryIndex();
 
         Callable<List> channelListCallable = () -> categoryService.queryChannel();
 
-        Callable<List> couponListCallable;
-        if(userId == null){
-            couponListCallable = () -> couponService.queryList(0, 3);
-        } else {
-            couponListCallable = () -> couponService.queryAvailableList(userId,0, 3);
-        }
+        //Callable<List> couponListCallable;
+        //if(userId == null){
+        //    couponListCallable = () -> couponService.queryList(0, 3);
+        //} else {
+        //    couponListCallable = () -> couponService.queryAvailableList(userId,0, 3);
+        //}
 
 
         Callable<List> newGoodsListCallable = () -> goodsService.queryByNew(0, SystemConfig.getNewLimit());
 
         Callable<List> hotGoodsListCallable = () -> goodsService.queryByHot(0, SystemConfig.getHotLimit());
 
-        Callable<List> brandListCallable = () -> brandService.query(0, SystemConfig.getBrandLimit());
+        //Callable<List> brandListCallable = () -> brandService.query(0, SystemConfig.getBrandLimit());
 
-        Callable<List> topicListCallable = () -> topicService.queryList(0, SystemConfig.getTopicLimit());
+        //Callable<List> topicListCallable = () -> topicService.queryList(0, SystemConfig.getTopicLimit());
 
         //团购专区
-        Callable<List> grouponListCallable = () -> grouponService.queryList(0, 5);
+        //Callable<List> grouponListCallable = () -> grouponService.queryList(0, 5);
 
         Callable<List> floorGoodsListCallable = this::getCategoryList;
 
-        FutureTask<List> bannerTask = new FutureTask<>(bannerListCallable);
+        //FutureTask<List> bannerTask = new FutureTask<>(bannerListCallable);
         FutureTask<List> channelTask = new FutureTask<>(channelListCallable);
-        FutureTask<List> couponListTask = new FutureTask<>(couponListCallable);
+        //FutureTask<List> couponListTask = new FutureTask<>(couponListCallable);
         FutureTask<List> newGoodsListTask = new FutureTask<>(newGoodsListCallable);
         FutureTask<List> hotGoodsListTask = new FutureTask<>(hotGoodsListCallable);
-        FutureTask<List> brandListTask = new FutureTask<>(brandListCallable);
-        FutureTask<List> topicListTask = new FutureTask<>(topicListCallable);
-        FutureTask<List> grouponListTask = new FutureTask<>(grouponListCallable);
+        //FutureTask<List> brandListTask = new FutureTask<>(brandListCallable);
+        //FutureTask<List> topicListTask = new FutureTask<>(topicListCallable);
+        //FutureTask<List> grouponListTask = new FutureTask<>(grouponListCallable);
         FutureTask<List> floorGoodsListTask = new FutureTask<>(floorGoodsListCallable);
 
-        executorService.submit(bannerTask);
+        //executorService.submit(bannerTask);
         executorService.submit(channelTask);
-        executorService.submit(couponListTask);
+        //executorService.submit(couponListTask);
         executorService.submit(newGoodsListTask);
         executorService.submit(hotGoodsListTask);
-        executorService.submit(brandListTask);
-        executorService.submit(topicListTask);
-        executorService.submit(grouponListTask);
+        //executorService.submit(brandListTask);
+        //executorService.submit(topicListTask);
+        //executorService.submit(grouponListTask);
         executorService.submit(floorGoodsListTask);
 
         Map<String, Object> entity = new HashMap<>();
         try {
-            entity.put("banner", bannerTask.get());
+            //entity.put("banner", bannerTask.get());
             entity.put("channel", channelTask.get());
-            entity.put("couponList", couponListTask.get());
+            //entity.put("couponList", couponListTask.get());
             entity.put("newGoodsList", newGoodsListTask.get());
             entity.put("hotGoodsList", hotGoodsListTask.get());
-            entity.put("brandList", brandListTask.get());
-            entity.put("topicList", topicListTask.get());
-            entity.put("grouponList", grouponListTask.get());
+            //entity.put("brandList", brandListTask.get());
+            //entity.put("topicList", topicListTask.get());
+            //entity.put("grouponList", grouponListTask.get());
             entity.put("floorGoodsList", floorGoodsListTask.get());
             //缓存数据
             HomeCacheManager.loadData(HomeCacheManager.INDEX, entity);

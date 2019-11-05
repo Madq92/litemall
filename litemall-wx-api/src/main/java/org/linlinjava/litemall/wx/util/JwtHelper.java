@@ -16,7 +16,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtHelper {
 	// 秘钥
-	static final String SECRET = "X-Litemall-Token";
+	static final String SECRET = "Frutis-Token";
 	// 签名是有谁生成
 	static final String ISSUSER = "LITEMALL";
 	// 签名的主题
@@ -31,7 +31,7 @@ public class JwtHelper {
 		    Map<String, Object> map = new HashMap<String, Object>();
 		    Date nowDate = new Date();
 		    // 过期时间：2小时
-		    Date expireDate = getAfterDate(nowDate,0,0,0,2,0,0);
+			Date expireDate = getAfterDate(nowDate, 0, 0, 1, 0, 0, 0);
 	        map.put("alg", "HS256");
 	        map.put("typ", "JWT");
 		    String token = JWT.create()

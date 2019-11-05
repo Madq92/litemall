@@ -9,20 +9,19 @@ Page({
   data: {
     newGoods: [],
     hotGoods: [],
-    topics: [],
-    brands: [],
-    groupons: [],
+    // topics: [],
+    // brands: [],
+    // groupons: [],
     floorGoods: [],
-    banner: [],
     channel: [],
-    coupon: [],
-    goodsCount: 0
+    // coupon: [],
+    // goodsCount: 0
   },
 
   onShareAppMessage: function() {
     return {
-      title: 'litemall小程序商场',
-      desc: '开源微信小程序商城',
+      title: '马荣果业',
+      desc: '',
       path: '/pages/index/index'
     }
   },
@@ -41,21 +40,20 @@ Page({
         that.setData({
           newGoods: res.data.newGoodsList,
           hotGoods: res.data.hotGoodsList,
-          topics: res.data.topicList,
-          brands: res.data.brandList,
+          // topics: res.data.topicList,
+          // brands: res.data.brandList,
           floorGoods: res.data.floorGoodsList,
-          banner: res.data.banner,
-          groupons: res.data.grouponList,
+          // groupons: res.data.grouponList,
           channel: res.data.channel,
-          coupon: res.data.couponList
+          // coupon: res.data.couponList
         });
       }
     });
-    util.request(api.GoodsCount).then(function (res) {
-      that.setData({
-        goodsCount: res.data
-      });
-    });
+    // util.request(api.GoodsCount).then(function (res) {
+    //   that.setData({
+    //     goodsCount: res.data
+    //   });
+    // });
   },
   onLoad: function(options) {
 
@@ -123,25 +121,25 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
-  getCoupon(e) {
-    if (!app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    }
+  // getCoupon(e) {
+  //   if (!app.globalData.hasLogin) {
+  //     wx.navigateTo({
+  //       url: "/pages/auth/login/login"
+  //     });
+  //   }
 
-    let couponId = e.currentTarget.dataset.index
-    util.request(api.CouponReceive, {
-      couponId: couponId
-    }, 'POST').then(res => {
-      if (res.errno === 0) {
-        wx.showToast({
-          title: "领取成功"
-        })
-      }
-      else{
-        util.showErrorToast(res.errmsg);
-      }
-    })
-  },
+  //   let couponId = e.currentTarget.dataset.index
+  //   util.request(api.CouponReceive, {
+  //     couponId: couponId
+  //   }, 'POST').then(res => {
+  //     if (res.errno === 0) {
+  //       wx.showToast({
+  //         title: "领取成功"
+  //       })
+  //     }
+  //     else{
+  //       util.showErrorToast(res.errmsg);
+  //     }
+  //   })
+  // },
 })

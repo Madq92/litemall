@@ -196,8 +196,9 @@ Page({
             collectImage: that.data.noCollectImage
           });
         }
-
-        WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
+        if (res.data.info.detail){
+          WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
+        }
         //获取推荐商品
         that.getGoodsRelated();
       }

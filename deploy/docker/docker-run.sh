@@ -1,0 +1,1 @@
+docker run -p 127.0.0.1:8080:8080 -e ENV=pro -v /var/logs:/var/logs app:20191031

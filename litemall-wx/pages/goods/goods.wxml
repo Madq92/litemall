@@ -4,7 +4,7 @@
       <image src="{{item}}" background-size="cover"></image>
     </swiper-item>
   </swiper>
-  <!-- 分享 -->
+  <!-- goods.name & 分享 -->
   <view class='goods_name'>
     <view class='goods_name_left'>{{goods.name}}</view>
     <view hidden="{{!canShare}}" class="goods_name_right" bindtap="shareFriendOrCircle">分享</view>
@@ -39,11 +39,11 @@
         <view class="retailPrice">现价：￥{{checkedSpecPrice}}</view>
       </view>
 
-      <view class="brand" wx:if="{{brand.name}}">
+      <!-- <view class="brand" wx:if="{{brand.name}}">
         <navigator url="../brandDetail/brandDetail?id={{brand.id}}">
           <text>{{brand.name}}</text>
         </navigator>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="section-nav section-attr" bindtap="switchAttrPop">
@@ -85,7 +85,7 @@
     </view>
   </view>
 
-  <view class="detail">
+  <view class="detail" >
     <import src="/lib/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
   </view>
@@ -109,7 +109,7 @@
   </view>
 
   <!-- 大家都在看 -->
-  <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+  <!-- <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
     <view class="h">
       <view class="line"></view>
       <text class="title">大家都在看</text>
@@ -123,7 +123,7 @@
         </navigator>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>
 <!-- 规格选择界面 -->
 <view class="attr-pop-box" hidden="{{!openAttr}}">
