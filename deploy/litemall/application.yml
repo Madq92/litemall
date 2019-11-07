@@ -37,8 +37,8 @@ pagehelper:
 litemall:
   # 开发者应该设置成自己的wx相关信息
   wx:
-    app-id: wxa5b486c6b918ecfb
-    app-secret: e04004829d4c383b4db7769d88dfbca1
+    app-id: wx48122ae0ddbceef1
+    app-secret: 4af9cb29067392a5f1b5fb167e0357a5
     mch-id: 111111
     mch-key: xxxxxx
     notify-url: http://118.24.0.153:8080/wx/order/pay-notify
@@ -132,7 +132,7 @@ litemall:
   # 对象存储配置
   storage:
     # 当前工作的对象存储模式，分别是local、aliyun、tencent
-    active: local
+    active: qiniu
     # 本地对象存储配置信息
     local:
       storagePath: storage
@@ -152,7 +152,7 @@ litemall:
       bucketName: xxxxxx
     # 七牛云对象存储配置信息
     qiniu:
-      endpoint: http://pd5cb6ulu.bkt.clouddn.com
-      accessKey: 111111
-      secretKey: xxxxxx
-      bucketName: litemall
+      endpoint: http://img.mikaka.cc
+      accessKey: UWQQ1PGVMiXQMOtZHjUpbxkNCbF8Xa8YrmO-1RI9
+      secretKey: bpx8YPDQePNGdP_Ay4QrVPexNEMKx185BN8LYVPJ
+      bucketName: mikaka

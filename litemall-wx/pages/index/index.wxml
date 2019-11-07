@@ -13,8 +13,9 @@
       </navigator>
     </swiper-item>
   </swiper> -->
+  <!-- 分类快捷跳转 -->
   <view class="m-menu">
-    <navigator class="item" url="/pages/category/category?id={{item.id}}" wx:for="{{channel}}" wx:key="id">
+    <navigator class="item" url="/pages/catalog/catalog?id={{item.id}}" open-type="reLaunch" wx:for="{{categoriesList}}" wx:for-item="item" wx:key="id">
       <image src="{{item.iconUrl}}" background-size="cover"></image>
       <text>{{item.name}}</text>
     </navigator>
@@ -172,7 +173,7 @@
     </view>
   </view> -->
 
-  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="id">
+  <!-- <view class="good-grid" wx:for="{{floorGoods}}" wx:key="id">
     <view class="h">
       <text>{{item.name}}</text>
     </view>
@@ -190,5 +191,5 @@
     <navigator url="/pages/category/category?id={{item.id}}" class="t">
       <view class="txt">{{'更多'+item.name+'好物 >'}}</view>
     </navigator>
-  </view>
+  </view> -->
 </view>

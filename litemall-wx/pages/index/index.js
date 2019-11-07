@@ -9,19 +9,13 @@ Page({
   data: {
     newGoods: [],
     hotGoods: [],
-    // topics: [],
-    // brands: [],
-    // groupons: [],
-    floorGoods: [],
-    channel: [],
-    // coupon: [],
-    // goodsCount: 0
+    categoriesList: [],
   },
 
   onShareAppMessage: function() {
     return {
-      title: '马荣果业',
-      desc: '',
+      title: '马荣果业--各种水果批发零售',
+      // desc: '',
       path: '/pages/index/index'
     }
   },
@@ -40,20 +34,10 @@ Page({
         that.setData({
           newGoods: res.data.newGoodsList,
           hotGoods: res.data.hotGoodsList,
-          // topics: res.data.topicList,
-          // brands: res.data.brandList,
-          floorGoods: res.data.floorGoodsList,
-          // groupons: res.data.grouponList,
-          channel: res.data.channel,
-          // coupon: res.data.couponList
+          categoriesList: res.data.categoriesList,
         });
       }
     });
-    // util.request(api.GoodsCount).then(function (res) {
-    //   that.setData({
-    //     goodsCount: res.data
-    //   });
-    // });
   },
   onLoad: function(options) {
 
@@ -121,25 +105,4 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
-  // getCoupon(e) {
-  //   if (!app.globalData.hasLogin) {
-  //     wx.navigateTo({
-  //       url: "/pages/auth/login/login"
-  //     });
-  //   }
-
-  //   let couponId = e.currentTarget.dataset.index
-  //   util.request(api.CouponReceive, {
-  //     couponId: couponId
-  //   }, 'POST').then(res => {
-  //     if (res.errno === 0) {
-  //       wx.showToast({
-  //         title: "领取成功"
-  //       })
-  //     }
-  //     else{
-  //       util.showErrorToast(res.errmsg);
-  //     }
-  //   })
-  // },
 })

@@ -2,7 +2,7 @@
 
 page{
   height: 100%;
-  background-color: #F2f2f2;
+  background-color: #ac9570;
 }
 .page-view{
   height: 100%;

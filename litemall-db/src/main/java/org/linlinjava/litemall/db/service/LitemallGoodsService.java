@@ -16,7 +16,8 @@ import java.util.List;
 
 @Service
 public class LitemallGoodsService {
-    Column[] columns = new Column[]{Column.id, Column.name, Column.brief, Column.picUrl, Column.isHot, Column.isNew, Column.counterPrice, Column.retailPrice};
+    Column[] columns = new Column[]{Column.id, Column.name, Column.brief, Column.picUrl, Column.isHot, Column.isNew,
+            Column.counterPrice, Column.retailPrice,Column.unit};
     @Resource
     private LitemallGoodsMapper goodsMapper;
 
@@ -87,6 +88,16 @@ public class LitemallGoodsService {
         return goodsMapper.selectByExampleSelective(example, columns);
     }
 
+    /**
+     * 获取分类下的商品
+     */
+    public List<LitemallGoods> queryByCategory(Integer catId) {
+        LitemallGoodsExample example = new LitemallGoodsExample();
+
+        example.or().andCategoryIdEqualTo(catId).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
+        example.setOrderByClause("add_time desc");
+        return goodsMapper.selectByExampleSelective(example, columns);
+    }
 
     public List<LitemallGoods> querySelective(Integer catId, Integer brandId, String keywords, Boolean isHot, Boolean isNew, Integer offset, Integer limit, String sort, String order) {
         LitemallGoodsExample example = new LitemallGoodsExample();

@@ -4,15 +4,11 @@ var api = require('../../config/api.js');
 Page({
   data: {
     categoryList: [],
-    currentCategory: {},
-    currentSubCategoryList: {},
-    scrollLeft: 0,
-    scrollTop: 0,
-    goodsCount: 0,
-    scrollHeight: 0
+    currentCategory: null,
+    currentCategoryGoodsList: {},
   },
   onLoad: function(options) {
-    this.getCatalog();
+    this.getCatalog(options.id);
   },
   onPullDownRefresh() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -20,38 +16,24 @@ Page({
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
   },
-  getCatalog: function() {
-    //CatalogList
+  getCatalog: function(id) {
     let that = this;
     wx.showLoading({
       title: '加载中...',
     });
-    util.request(api.CatalogList).then(function(res) {
+    if(!id){
+      id = "";
+    }
+    util.request(api.CatalogV2List, {
+      categoryId: id
+    }).then(function(res) {
       that.setData({
-        categoryList: res.data.categoryList,
+        categoryList: res.data.categoriesList,
+        currentCategoryGoodsList: res.data.currentGoodsList,
         currentCategory: res.data.currentCategory,
-        currentSubCategoryList: res.data.currentSubCategory
       });
       wx.hideLoading();
     });
-    util.request(api.GoodsCount).then(function(res) {
-      that.setData({
-        goodsCount: res.data
-      });
-    });
-
-  },
-  getCurrentCategory: function(id) {
-    let that = this;
-    util.request(api.CatalogCurrent, {
-        id: id
-      })
-      .then(function(res) {
-        that.setData({
-          currentCategory: res.data.currentCategory,
-          currentSubCategoryList: res.data.currentSubCategory
-        });
-      });
   },
   onReady: function() {
     // 页面渲染完成
@@ -64,6 +46,18 @@ Page({
   },
   onUnload: function() {
     // 页面关闭
+  },
+  getCurrentCategory: function (id) {
+    let that = this;
+    util.request(api.CatalogV2List, {
+      categoryId: id
+    }).then(function (res) {
+        that.setData({
+          categoryList: res.data.categoriesList,
+          currentCategoryGoodsList: res.data.currentGoodsList,
+          currentCategory: res.data.currentCategory,
+        });
+      });
   },
   switchCate: function(event) {
     var that = this;

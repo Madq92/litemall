@@ -27,6 +27,7 @@ public class WxSwagger2Configuration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("wx")
                 .apiInfo(wxApiInfo())
+                .enable(true)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("org.linlinjava.litemall.wx.web"))
                 .paths(PathSelectors.any())

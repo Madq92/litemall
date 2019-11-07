@@ -54,8 +54,6 @@ public class WxCatalogController {
      */
     @GetMapping("index")
     public Object index(Integer id) {
-
-        // 所有一级分类目录
         List<LitemallCategory> l1CatList = categoryService.queryL1();
 
         // 当前一级分类目录
