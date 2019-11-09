@@ -26,7 +26,7 @@ page {
 .service-policy .item {
   background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
   background-size: 10rpx;
-  padding-left: 15rpx;
+  padding-left: 20rpx;
   display: flex;
   align-items: center;
   font-size: 25rpx;
@@ -88,7 +88,7 @@ page {
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
   letter-spacing: 3rpx;
-  background-image: linear-gradient(to right, #9a9ba1 0%, #9a9ba1 100%);
+  /* background-image: linear-gradient(to right, #9a9ba1 0%, #9a9ba1 100%); */
 }
 
 .no-cart {

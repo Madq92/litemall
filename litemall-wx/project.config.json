@@ -30,6 +30,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 22,
 			"list": [
@@ -118,10 +122,11 @@
 					"query": "valueId=1181000&type=0"
 				},
 				{
-					"id": -1,
+					"id": 14,
 					"name": "购物车",
 					"pathName": "pages/cart/cart",
-					"query": ""
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": -1,

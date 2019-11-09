@@ -47,6 +47,28 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
+  wxLogin: function (e) {
+    if (e.detail.userInfo == undefined) {
+      app.globalData.hasLogin = false;
+      util.showErrorToast('微信登录失败');
+      return;
+    }
+
+    user.checkLogin().catch(() => {
+
+      user.loginByWeixin(e.detail.userInfo).then(res => {
+        app.globalData.hasLogin = true;
+
+        wx.navigateBack({
+          delta: 1
+        })
+      }).catch((err) => {
+        app.globalData.hasLogin = false;
+        util.showErrorToast('微信登录失败');
+      });
+
+    });
+  },
   goLogin() {
     wx.navigateTo({
       url: "/pages/auth/login/login"
